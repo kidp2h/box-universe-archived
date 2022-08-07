@@ -1,0 +1,57 @@
+version: "3.7"
+
+services:
+  mongo:
+    container_name: mongo
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: root
+    volumes:
+      - ../.docker/mongodb:/data/db
+    ports:
+      - 27017:27017
+    networks:
+      box_universe:
+        ipv4_address: 172.26.22.99
+  node-server:
+    restart: always
+    build:
+      context: ../
+      dockerfile: ./server/docker/Dockerfile.dev # development
+    environment:
+      SECRET: ${SECRET}
+      PORT: ${PORT}
+      SALT: ${SALT}
+      TIME_EXPIRE_JWT: ${TIME_EXPIRE_JWT}
+    ports:
+      - 3000:3000
+    volumes:
+      - ../server/src:/server/src/ # development
+    networks:
+      box_universe:
+        ipv4_address: 172.26.22.101
+    depends_on:
+      - mongo
+  node-client:
+    restart: always
+    build:
+      context: ../
+      dockerfile: ./client/docker/Dockerfile.dev # development
+    ports:
+      - 5000:5000
+    volumes:
+      - ../client/src:/client/src/ # development
+    networks:
+      box_universe:
+        ipv4_address: 172.26.22.102
+    depends_on:
+      - node-server
+networks:
+  box_universe:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.26.22.0/24
