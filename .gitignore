@@ -102,7 +102,7 @@ dist
 
 *.pem
 .docker
-.env
+# .env
 client
 server
 

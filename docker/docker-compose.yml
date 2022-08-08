@@ -2,56 +2,60 @@ version: "3.7"
 
 services:
   mongo:
-    container_name: mongo
+    container_name: ${CONTAINER_NAME_MONGO} 
     image: mongo
     restart: always
     environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME} 
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD} 
     volumes:
       - ../.docker/mongodb:/data/db
     ports:
-      - 27017:27017
+      - ${PORT_MONGO}:${PORT_MONGO}
     networks:
       box_universe:
-        ipv4_address: 172.26.22.99
+        ipv4_address: ${CONTAINER_MONGO_IP}
   node-server:
+    container_name: ${CONTAINER_NAME_SERVER}
     restart: always
     build:
       context: ../
       dockerfile: ./server/docker/Dockerfile.dev # development
     environment:
       SECRET: ${SECRET}
-      PORT: ${PORT}
+      PORT: ${PORT_SERVER}
       SALT: ${SALT}
-      TIME_EXPIRE_JWT: ${TIME_EXPIRE_JWT}
+      TIME_EXPIRE_ACCESS_TOKEN: ${TIME_EXPIRE_ACCESS_TOKEN}
+      TIME_EXPIRE_REFRESH_TOKEN: ${TIME_EXPIRE_REFRESH_TOKEN}
+      MONGO_URL: ${MONGO_URL}
     ports:
-      - 3000:3000
+      - ${PORT_SERVER}:${PORT_SERVER}
     volumes:
       - ../server/src:/server/src/ # development
     networks:
       box_universe:
-        ipv4_address: 172.26.22.101
+        ipv4_address: ${CONTAINER_SERVER_IP}
     depends_on:
       - mongo
   node-client:
+    container_name: ${CONTAINER_NAME_CLIENT}
     restart: always
     build:
       context: ../
       dockerfile: ./client/docker/Dockerfile.dev # development
     ports:
-      - 5000:5000
+      - ${PORT_CLIENT}:${PORT_CLIENT}
     volumes:
       - ../client/src:/client/src/ # development
     networks:
       box_universe:
-        ipv4_address: 172.26.22.102
+        ipv4_address: ${CONTAINER_CLIENT_IP} 
     depends_on:
-      - node-server
+      - node-server 
 networks:
   box_universe:
     driver: bridge
     ipam:
       driver: default
       config:
-        - subnet: 172.26.22.0/24
+        - subnet: ${CONTAINER_SUBNET} 
