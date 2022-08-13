@@ -47,6 +47,10 @@ services:
       - ${PORT_CLIENT}:${PORT_CLIENT}
     volumes:
       - ../client/src:/client/src/ # development
+    environment: 
+      NEXTAUTH_URL: ${NEXTAUTH_URL}
+      SECRET: ${SECRET}
+      NEXTAUTH_SECRET: ${SECRET}
     networks:
       box_universe:
         ipv4_address: ${CONTAINER_CLIENT_IP} 
