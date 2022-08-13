@@ -14,10 +14,10 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - run: pwd
       - run: git clone https://github.com/kidp2h/box-universe-client ./client
-      - run: sh ./scripts/production.sh
+      - run: git clone https://github.com/kidp2h/box-universe-server ./server
       - run: ls -a
+      - run: cd server && ls -a
 
 workflows:
   build:
