@@ -37,7 +37,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/client
+          at: client
       - run: ls
   client:
     docker:
