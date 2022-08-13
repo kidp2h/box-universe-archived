@@ -24,6 +24,7 @@ jobs:
     steps:
       - checkout
       - run: npm install -g yarn@latest
+      - run: ls -a
   server:
     docker:
       - image: cimg/node:lts
