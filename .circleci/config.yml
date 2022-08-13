@@ -29,7 +29,8 @@ jobs:
       - image: cimg/node:lts
     steps:
       - checkout
-      - run: cd server
+      - run: ls
+      - run: cd ./server
       - run: yarn install --production
       - run: yarn build
       - run: yarn start:prod
@@ -38,7 +39,8 @@ jobs:
       - image: cimg/node:lts
     steps:
       - checkout
-      - run: cd client
+      - run: ls
+      - run: cd ./client
       - run: yarn install --production
       - run: yarn build
       - run: yarn start
