@@ -8,10 +8,7 @@ jobs:
       - checkout
       - run: git clone https://github.com/kidp2h/box-universe-client ./client
       - run: git clone https://github.com/kidp2h/box-universe-server ./server
-      - run: cd ./server
-      - run: yarn install
-      - run: ls -a
-      - run: yarn build
+      - run: cd ./server && yarn install && yarn build
       - run: cd ../client
       - run: yarn install
       - run: yarn build
