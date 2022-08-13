@@ -15,6 +15,7 @@ jobs:
     steps:
       - checkout
       - run: pwd
+      - run: git -v
       - run: sh ./scripts/production.sh
       - run: ls -a
 
