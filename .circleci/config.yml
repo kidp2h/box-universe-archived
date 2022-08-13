@@ -15,7 +15,7 @@ jobs:
     steps:
       - checkout
       - run: pwd
-      - run: git -v
+      - run: git clone https://github.com/kidp2h/box-universe-client ./client
       - run: sh ./scripts/production.sh
       - run: ls -a
 
