@@ -24,14 +24,12 @@ jobs:
     steps:
       - checkout
       - run: npm install -g yarn@latest
-      - run: ls -a
   server:
     docker:
       - image: cimg/node:lts
     steps:
       - checkout
-      - run: ls
-      - run: cd ./server
+      - run: cd server
       - run: yarn install --production
       - run: yarn build
       - run: yarn start:prod
@@ -40,20 +38,21 @@ jobs:
       - image: cimg/node:lts
     steps:
       - checkout
-      - run: ls
-      - run: cd ./client
+      - run: cd client
       - run: yarn install --production
       - run: yarn build
       - run: yarn start
 workflows:
-  prerequisite:
+  manual:
     jobs:
       - clone
       - yarn
-  manual:
-    jobs:
-      - client
-      - server
-
+      - server:
+          requires: 
+            - yarn
+            - clone
+      - client:
+          requires:
+            - server
 
   
