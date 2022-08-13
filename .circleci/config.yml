@@ -18,10 +18,36 @@ jobs:
       - run: git clone https://github.com/kidp2h/box-universe-server ./server
       - run: ls -a
       - run: cd server && ls -a
-
+  yarn:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - run: npm install -g yarn@latest
+  server:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - run: cd server
+      - run: yarn install --production
+      - run: yarn build
+      - run: yarn start:prod
+  client:
+    docker:
+      - image: cimg/node:lts
+    steps:
+      - checkout
+      - run: cd client
+      - run: yarn install --production
+      - run: yarn build
+      - run: yarn start
 workflows:
-  build:
+  manual:
     jobs:
       - clone
+      - yarn
+      - server
+      - client
 
   
