@@ -14,15 +14,18 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - persist_to_workspace:
-          root: workspace
-          # Must be relative path from root
-          paths:
-            - echo-output
       - run: git clone https://github.com/kidp2h/box-universe-client ./client
       - run: git clone https://github.com/kidp2h/box-universe-server ./server
       - run: ls -a
       - run: cd server && ls -a
+      - persist_to_workspace:
+          root: client
+          paths:
+            - ./
+      - persist_to_workspace:
+          root: server
+          paths:
+            - ./
   yarn:
     docker:
       - image: cimg/node:lts
@@ -34,7 +37,7 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: /tmp/workspace
+          at: /tmp/client
       - run: ls
   client:
     docker:
