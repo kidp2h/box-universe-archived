@@ -14,8 +14,11 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - persist_to_workspace:
+          root: workspace
+          # Must be relative path from root
+          paths:
+            - echo-output
       - run: git clone https://github.com/kidp2h/box-universe-client ./client
       - run: git clone https://github.com/kidp2h/box-universe-server ./server
       - run: ls -a
@@ -24,29 +27,20 @@ jobs:
     docker:
       - image: cimg/node:lts
     steps:
-      - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run: npm install -g yarn@latest
   server:
     docker:
       - image: cimg/node:lts
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
+      - attach_workspace:
+          at: /tmp/workspace
       - run: ls
-      - run: cd ./server
-      - run: yarn install --production
-      - run: yarn build
-      - run: yarn start:prod
   client:
     docker:
       - image: cimg/node:lts
     steps:
       - checkout
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run: cd ./client
       - run: yarn install --production
       - run: yarn build
