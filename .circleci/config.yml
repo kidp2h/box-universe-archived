@@ -14,13 +14,13 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - run: pwd
       - run: sh ./scripts/production.sh
       - run: ls -a
 
 workflows:
   build:
     jobs:
-      - compose
       - clone
 
   
