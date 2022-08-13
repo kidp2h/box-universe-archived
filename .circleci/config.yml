@@ -43,11 +43,14 @@ jobs:
       - run: yarn build
       - run: yarn start
 workflows:
-  manual:
+  prerequisite:
     jobs:
       - clone
       - yarn
-      - server
+  manual:
+    jobs:
       - client
+      - server
+
 
   
