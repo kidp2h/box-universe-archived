@@ -1,64 +1,23 @@
 version: 2.1
-orbs:
-  docker: circleci/docker@1.7.0
 
 jobs:
-  compose:
+  build:
     docker:
-      - image: cimg/base:stable
-    steps:
-      - docker/install-docker-tools:
-          install-docker-compose: true
-  clone:
-    docker:
-      - image: cimg/base:stable
+      - image: cimg/node:lts
     steps:
       - checkout
       - run: git clone https://github.com/kidp2h/box-universe-client ./client
       - run: git clone https://github.com/kidp2h/box-universe-server ./server
-      - run: ls -a
-      - run: cd server && ls -a
-      - persist_to_workspace:
-          root: client
-          paths:
-            - ./
-      - persist_to_workspace:
-          root: server
-          paths:
-            - ./
-  yarn:
-    docker:
-      - image: cimg/node:lts
-    steps:
-      - run: npm install -g yarn@latest
-  server:
-    docker:
-      - image: cimg/node:lts
-    steps:
-      - checkout
-      - attach_workspace:
-          at: client
-      - run: ls
-  client:
-    docker:
-      - image: cimg/node:lts
-    steps:
-      - checkout
-      - run: cd ./client
-      - run: yarn install --production
+      - run: cd server
+      - run: yarn install
+      - run: yarn build
+      - run: cd ../client
+      - run: yarn install
       - run: yarn build
       - run: yarn start
 workflows:
   manual:
     jobs:
-      - clone
-      - yarn
-      - server:
-          requires: 
-            - yarn
-            - clone
-      - client:
-          requires:
-            - server
+      - build
 
   
