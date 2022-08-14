@@ -17,6 +17,8 @@ jobs:
       - checkout
       - run: cp .env.example .env
       - setup_remote_docker
+      - run: cat .env
+      - run: ls -a
       - run: docker-compose --env-file ./.env -f ./docker/docker-compose.yml build
 workflows:
   manual:
