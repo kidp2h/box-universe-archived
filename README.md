@@ -17,7 +17,7 @@
     <img src="https://res.cloudinary.com/boxuniverse/image/upload/v1660450078/logo_lkjppw.png" alt="Logo" width="250" height="250">
   </a>
 
-  <h3 align="center">BOX-UNIVERSE</h3>
+  <h1 align="center">BOX UNIVERSE</h1>
 
   <p align="center">
     A Project Fullstack with NodeJS-NestJS-NextJS-MongoDB!
