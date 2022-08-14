@@ -14,7 +14,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/kidp2h/box-universe">
-    <img src="https://res.cloudinary.com/boxuniverse/image/upload/v1660450078/logo_lkjppw.png" alt="Logo" width="250" height="250">
+    <img src="https://res.cloudinary.com/boxuniverse/image/upload/v1660450078/logo_lkjppw.png" alt="Logo" width="300" height="300">
   </a>
 
   <h1 align="center">BOX UNIVERSE</h1>
