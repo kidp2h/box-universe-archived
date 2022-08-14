@@ -10,9 +10,16 @@ jobs:
       - run: git clone https://github.com/kidp2h/box-universe-server ./server
       - run: cd ./server && yarn install && yarn build
       - run: cd ./client && yarn install && yarn build
+  docker:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run: cp .env.example .env
+      - run: docker-compose --env-file ./.env -f ./docker/docker-compose.yml build
 workflows:
   manual:
     jobs:
-      - build
+      - docker
 
   
