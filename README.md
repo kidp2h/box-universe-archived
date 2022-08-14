@@ -14,7 +14,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/kidp2h/box-universe">
-    <img src="images/logo.png" alt="Logo" width="250" height="250">
+    <img src="https://res.cloudinary.com/boxuniverse/image/upload/v1660450078/logo_lkjppw.png" alt="Logo" width="250" height="250">
   </a>
 
   <h3 align="center">BOX-UNIVERSE</h3>
@@ -284,7 +284,7 @@ Don't forget to give the project a star! Thanks again!
 [license-url]: https://github.com/kidp2h/box-universe/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/kidp2h
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: https://res.cloudinary.com/boxuniverse/image/upload/v1660450105/box-universe_zml5ke.jpg
 
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
