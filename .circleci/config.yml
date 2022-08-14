@@ -19,8 +19,6 @@ jobs:
       - checkout
       - docker/install-docker
       - run: cp .env.example .env
-      - setup_remote_docker:
-          docker_layer_caching: true
       - run: cat .env
       - run: ls -a
       - run: docker compose --env-file ./.env -f ./docker/docker-compose.yml build
