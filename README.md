@@ -7,6 +7,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+![GitHub commit activity](https://img.shields.io/github/commit-activity/w/kidp2h/box-universe-client?label=commit&logo=GITHUB&style=for-the-badge)
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
