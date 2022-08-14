@@ -12,7 +12,7 @@ jobs:
       - run: cd ./client && yarn install && yarn build
   docker:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/base:latest
     steps:
       - checkout
       - run: cp .env.example .env
