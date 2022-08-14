@@ -16,6 +16,7 @@ jobs:
     steps:
       - checkout
       - run: cp .env.example .env
+      - setup_remote_docker
       - run: docker-compose --env-file ./.env -f ./docker/docker-compose.yml build
 workflows:
   manual:
