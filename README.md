@@ -7,9 +7,6 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
-
-
-
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -38,6 +35,15 @@
   <summary>Table of Contents</summary>
   <ol>
     <li>
+      <a href="#build">Build</a>
+      <ul>
+        <li><a href="#client">Client</a></li>
+      </ul>
+      <ul>
+        <li><a href="#server">Server</a></li>
+      </ul>
+    </li>
+    <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
         <li><a href="#built-with">Built With</a></li>
@@ -60,6 +66,14 @@
 
 
 
+
+## Build
+![CircleCI](https://img.shields.io/circleci/build/github/kidp2h/box-universe/main?logo=circleci&style=for-the-badge)
+### Client
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kidp2h/box-universe-client/BUILD?logo=github&style=for-the-badge)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kidp2h/box-universe-client/LINT?label=LINT&logo=github&style=for-the-badge)
+### Server
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kidp2h/box-universe-server/BUILD?logo=github&style=for-the-badge)
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
