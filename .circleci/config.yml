@@ -20,7 +20,7 @@ jobs:
           docker_layer_caching: true
       - run: cat .env
       - run: ls -a
-      - run: docker-compose --env-file ./.env -f ./docker/docker-compose.yml build
+      - run: docker compose --env-file ./.env -f ./docker/docker-compose.yml build
 workflows:
   manual:
     jobs:
