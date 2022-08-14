@@ -1,7 +1,9 @@
 version: 2.1
+orbs:
+  docker: circleci/docker@1.7.0
 
 jobs:
-  build:
+  manual:
     docker:
       - image: cimg/node:lts
     steps:
@@ -15,13 +17,19 @@ jobs:
       - image: cimg/base:stable
     steps:
       - checkout
+      - docker/install-docker
+      - setup_remote_docker:
+          docker_layer_caching: true # should not be important
+          version: 20.10.12
       - run: cp .env.example .env
-      - setup_remote_docker
-      - run: cat .env
-      - run: ls -a
-      - run: docker-compose --env-file ./.env -f ./docker/docker-compose.yml build
+      - run: git clone https://github.com/kidp2h/box-universe-client ./client
+      - run: git clone https://github.com/kidp2h/box-universe-server ./server
+      - run: docker compose --env-file ./.env -f ./docker/docker-compose.yml build
 workflows:
   manual:
+    jobs:
+      - manual
+  docker:
     jobs:
       - docker
 
