@@ -16,7 +16,7 @@ jobs:
     steps:
       - checkout
       - run: cp .env.example .env
-      - run: docker-compose -v
+      - run: docker-compose --env-file ./.env -f ./docker/docker-compose.yml build
 workflows:
   manual:
     jobs:
