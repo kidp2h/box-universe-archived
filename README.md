@@ -280,7 +280,7 @@ Don't forget to give the project a star! Thanks again!
 [stars-url]: https://github.com/kidp2h/box-universe/stargazers
 [issues-shield]: https://img.shields.io/github/issues/kidp2h/box-universe?style=for-the-badge
 [issues-url]: https://github.com/kidp2h/box-universe/issues
-[license-shield]: https://img.shields.io/github/license/kidp2h/Best-README-Template.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/kidp2h/box-universe?style=for-the-badge
 [license-url]: https://github.com/kidp2h/box-universe/blob/master/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/kidp2h
