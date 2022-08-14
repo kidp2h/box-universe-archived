@@ -1,4 +1,6 @@
 version: 2.1
+orbs:
+  docker: circleci/docker@1.7.0
 
 jobs:
   build:
@@ -12,9 +14,10 @@ jobs:
       - run: cd ./client && yarn install && yarn build
   docker:
     docker:
-      - image: cimg/base:latest
+      - image: cimg/base:stable
     steps:
       - checkout
+      - docker/install-docker
       - run: cp .env.example .env
       - setup_remote_docker:
           docker_layer_caching: true
