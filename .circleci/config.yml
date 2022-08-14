@@ -3,7 +3,7 @@ orbs:
   docker: circleci/docker@1.7.0
 
 jobs:
-  build:
+  manual:
     docker:
       - image: cimg/node:lts
     steps:
@@ -27,6 +27,9 @@ jobs:
       - run: docker compose --env-file ./.env -f ./docker/docker-compose.yml build
 workflows:
   manual:
+    jobs:
+      - manual
+  docker:
     jobs:
       - docker
 
